@@ -1,0 +1,61 @@
+name: Подтверждение готовности
+description: Подтвердите локальную подготовку проекта перед воркшопом
+title: "[READY] "
+labels: ["workshop-ready"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Не публикуйте пароли, токены, API keys, `.env` и приватные ключи.
+  - type: input
+    id: participant
+    attributes:
+      label: Имя
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: Учебный репозиторий
+      placeholder: https://github.com/username/repository
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: AI-агент
+      options:
+        - Codex
+        - Claude Code
+        - Cursor
+        - Windsurf
+        - GitHub Copilot
+        - Другой
+    validations:
+      required: true
+  - type: dropdown
+    id: operating_system
+    attributes:
+      label: Операционная система
+      options:
+        - macOS
+        - Windows
+        - Linux
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Проверки
+      options:
+        - label: "`npm run workshop:check` завершилась сообщением `READY FOR WORKSHOP`"
+          required: true
+        - label: "`tdpd audit` завершилась сообщением `Audit passed`"
+          required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Результаты проверки
+      description: Вставьте строки READY FOR WORKSHOP и Audit passed или приложите скриншот терминала.
+    validations:
+      required: true
